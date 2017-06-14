@@ -10,5 +10,15 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.okhttptest.RxJavaActivity">
-
+    <Button
+        android:id="@+id/btn_function"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="function"
+        />
+    <TextView
+        android:id="@+id/tv_text"
+        android:layout_below="@id/btn_function"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 </RelativeLayout>

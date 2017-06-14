@@ -4,8 +4,12 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.okhttptest.been.GsonBen;
 import com.example.okhttptest.been.LoginRequest;
 import com.example.okhttptest.been.LoginResponse;
 import com.example.okhttptest.https.API;
@@ -21,21 +25,67 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 
-public class RxJavaActivity extends AppCompatActivity {
+public class RxJavaActivity extends AppCompatActivity implements View.OnClickListener{
     private static final String TAG = "RxJavaActivity";
-
+    private Button btn_function;
+    private TextView tv_text;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rxjava);
-        //        fun1();
-        //        fun2();
-//        fun3();
-        fun4(this);
+        initView();
+
+    }
+
+    private void initView() {
+        btn_function= (Button) findViewById(R.id.btn_function);
+        btn_function.setOnClickListener(this);
+        tv_text= (TextView) findViewById(R.id.tv_text);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.btn_function:
+                //        fun1();
+                //        fun2();
+                //        fun3();
+                //        fun4(this);
+                fun5();
+                break;
+        }
+    }
+    private void fun5() {
+        API api = HttpUtils.create().create(API.class);
+        api.getAndroidInfo()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<GsonBen>() {
+                    @Override
+                    public void onSubscribe(@NonNull Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(@NonNull GsonBen gsonBen) {
+                        Log.d(TAG, "onNext: "+gsonBen.getResults().get(0).toString());
+                        tv_text.setText(gsonBen.getResults().get(0).toString());
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
     }
 
     private void fun4(final Context context) {
-        API api= HttpUtils.create().create(API.class);
+        API api = HttpUtils.create().create(API.class);
         api.Login(new LoginRequest())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -47,12 +97,12 @@ public class RxJavaActivity extends AppCompatActivity {
 
                     @Override
                     public void onNext(@NonNull LoginResponse loginResponse) {
-                        Toast.makeText(context,"登录成功",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, "登录成功", Toast.LENGTH_SHORT).show();
                     }
 
                     @Override
                     public void onError(@NonNull Throwable e) {
-                        Toast.makeText(context,"登录失败",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, "登录失败", Toast.LENGTH_SHORT).show();
 
                     }
 
@@ -85,14 +135,25 @@ public class RxJavaActivity extends AppCompatActivity {
         * */
         Observable.create(new ObservableOnSubscribe<Integer>() {
             @Override
-            public void subscribe(@NonNull ObservableEmitter<Integer> e) throws Exception {
+            public void subscribe(@NonNull final ObservableEmitter<Integer> e) throws Exception {
                 Log.d(TAG, "Observable thread is: " + Thread.currentThread().getName());
                 Log.d(TAG, "emit 1");
-                e.onNext(1);
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            Thread.sleep(2000);
+                            e.onNext(1);
+
+                        } catch (InterruptedException e1) {
+                            e1.printStackTrace();
+                        }
+                    }
+                }).start();
             }
         })
                 .subscribeOn(Schedulers.newThread())//被观察者只能指定一次线程
-                .subscribeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(AndroidSchedulers.mainThread())//其他的无效
                 .observeOn(AndroidSchedulers.mainThread())//观察者可以切换多次线程
                 .doOnNext(new Consumer<Integer>() {
                     @Override
@@ -196,4 +257,5 @@ public class RxJavaActivity extends AppCompatActivity {
             }
         });
     }
+
 }

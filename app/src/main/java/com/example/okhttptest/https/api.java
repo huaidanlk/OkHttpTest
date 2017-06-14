@@ -1,5 +1,6 @@
 package com.example.okhttptest.https;
 
+import com.example.okhttptest.been.GsonBen;
 import com.example.okhttptest.been.LoginRequest;
 import com.example.okhttptest.been.LoginResponse;
 
@@ -23,9 +24,13 @@ public interface API {
     Observable<LoginResponse> Login(@Body LoginRequest request);
 
     @GET(".")
-    Observable<LoginResponse> Register(@QueryMap Map<String,String> map);
+    Observable<LoginResponse> Register(@QueryMap Map<String, String> map);
 
     @GET(".")
-    Observable<LoginResponse> Register1(@FieldMap Map<String,String> map);
+    Observable<LoginResponse> Register1(@FieldMap Map<String, String> map);
+
+//    http://gank.io/api/data/Android/10/1
+    @GET("api/data/Android/10/1")
+    Observable<GsonBen> getAndroidInfo();
 
 }
