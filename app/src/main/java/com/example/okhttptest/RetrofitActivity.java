@@ -20,6 +20,7 @@ public class RetrofitActivity extends AppCompatActivity {
                 .baseUrl("https://www.baidu.com")
 //                .addConverterFactory(GsonConverterFactory.create())
                 .build();
+
         MyUser userBiz = retrofit.create(MyUser.class);
         Call<String> call = userBiz.getUsers(new User());
         call.enqueue(new Callback<String>()
