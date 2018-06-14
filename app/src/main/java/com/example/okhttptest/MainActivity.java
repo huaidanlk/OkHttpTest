@@ -4,8 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+public class MainActivity extends AppCompatActivity implements View.OnClickListener,CommonActivity.onCommonClick{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,8 +28,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.btn_1:
-                Intent intent=new Intent(this,OkHttpActivity.class);
-                startActivityForResult(intent,1);
+                CommonActivity.startActivity(this,"MainActivity");
                 break;
             case R.id.btn_2:
                 Intent intent2=new Intent(this,RetrofitActivity.class);
@@ -39,5 +39,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivityForResult(intent3,1);
                 break;
         }
+    }
+
+    @Override
+    public void onClick() {
+        Toast.makeText(getApplicationContext(),"MainActivity",Toast.LENGTH_SHORT).show();
     }
 }

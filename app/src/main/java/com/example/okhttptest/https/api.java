@@ -17,7 +17,7 @@ import retrofit2.http.QueryMap;
  * Created by 坏蛋 on 2017/5/27.
  */
 
-public interface API {
+public interface api {
     //@GET("")里面一定要有数据，不能为@GET 或者@GET("")
     // 没有数据就加 . 或者 /
     @POST("/")

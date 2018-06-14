@@ -23,6 +23,9 @@
         </activity>
         <activity android:name=".RxJavaActivity">
         </activity>
+        <activity android:name=".CommonActivity">
+        </activity>
+
     </application>
 
 </manifest>
