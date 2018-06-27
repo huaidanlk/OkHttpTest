@@ -1,6 +1,7 @@
 package com.example.okhttptest;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -18,7 +19,7 @@ public class CommonActivity extends AppCompatActivity implements View.OnClickLis
         activity.startActivity(intent);
     }
     public interface onCommonClick{
-        public void onClick();
+        public void onClick(Context context);
     }
 
 
@@ -36,7 +37,7 @@ public class CommonActivity extends AppCompatActivity implements View.OnClickLis
         switch (view.getId()) {
             case R.id.btn_1:
                 if("MainActivity".equals(getIntent().getStringExtra(TAG))){
-                    new MainActivity().onClick();
+                    new MainActivity().onClick(this);
                 }
                 break;
         }
