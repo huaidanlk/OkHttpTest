@@ -4,11 +4,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener,CommonActivity.onCommonClick{
+import com.example.okhttptest.fragment.TestFragment;
 
+public class MainActivity extends AppCompatActivity implements View.OnClickListener,CommonActivity.onCommonClick{
+    private static final String TAG = "MainActivity";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,6 +26,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             }
         });
+        initView();
+    }
+
+    private void initView() {
+        TestFragment testFragment=TestFragment.newInstance();
+        getSupportFragmentManager().beginTransaction().add(R.id.activity_main,testFragment).commit();
+    }
+
+    @Override
+    protected void onResume() {
+        Log.e(TAG, "onResume: " );
+        super.onResume();
     }
 
     @Override
