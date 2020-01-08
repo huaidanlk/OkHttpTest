@@ -25,6 +25,10 @@
         </activity>
         <activity android:name=".CommonActivity">
         </activity>
+        <activity android:name=".DataBindingTestActivity">
+        </activity>
+        <activity android:name=".DataBindingTest1Activity">
+        </activity>
 
     </application>
 

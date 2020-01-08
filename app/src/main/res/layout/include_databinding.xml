@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="com.example.okhttptest.been.User1"/>
+        <import type="com.example.okhttptest.DataBindingTestActivity.Presenter"/>
+
+        <variable
+            name="user123"
+            type="User1" />
+
+        <variable
+            name="presenter"
+            type="Presenter"/>
+
+    </data>
+
+    <LinearLayout
+        android:id="@+id/activity_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{user123.name,default= 11111}"
+            />
+
+        <TextView
+            android:id="@+id/email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{user123.email}" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:afterTextChanged="@{presenter.afterTextChanged}"
+            />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="改变 name"
+            android:onClick="@{()->presenter.setName()}"
+            android:textAllCaps="false"/>
+
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="改变 email"
+            android:onClick="@{()->presenter.setEmail()}"
+            android:textAllCaps="false"/>
+    </LinearLayout>
+</layout>

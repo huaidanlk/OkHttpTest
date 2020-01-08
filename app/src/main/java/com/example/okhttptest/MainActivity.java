@@ -8,10 +8,17 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.okhttptest.been.Car;
 import com.example.okhttptest.fragment.TestFragment;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener,CommonActivity.onCommonClick{
-    private static final String TAG = "MainActivity";
+import java.lang.ref.WeakReference;
+
+public class MainActivity extends AppCompatActivity implements View.OnClickListener, CommonActivity.onCommonClick {
+    private static final String TAG = "CarGc";
+    private Car mCar;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,24 +34,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
         initView();
+
     }
 
+
     private void initView() {
-        TestFragment testFragment=TestFragment.newInstance();
-        getSupportFragmentManager().beginTransaction().add(R.id.activity_main,testFragment).commit();
+        TestFragment testFragment = TestFragment.newInstance();
+        getSupportFragmentManager().beginTransaction().add(R.id.activity_main, testFragment).commit();
     }
 
     @Override
     protected void onResume() {
-        Log.e(TAG, "onResume: " );
         super.onResume();
     }
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.btn_1:
-                CommonActivity.startActivity(this,"MainActivity");
+//                CommonActivity.startActivity(this,"MainActivity");
+                DataBindingTestActivity.startActivity(this);
                 break;
 //            case R.id.btn_2:
 //                Intent intent2=new Intent(this,RetrofitActivity.class);
@@ -59,6 +68,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(Context context) {
-        Toast.makeText(context,"MainActivity",Toast.LENGTH_SHORT).show();
+        Toast.makeText(context, "MainActivity", Toast.LENGTH_SHORT).show();
     }
 }
