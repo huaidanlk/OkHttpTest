@@ -41,9 +41,9 @@ public class DataBindingTestActivity extends AppCompatActivity {
 
         @Override
         public void handleMessage(Message msg) {
-            if(weakReference.get()==null){
+            if (weakReference.get() == null) {
                 Log.d(TAG, "handleMessage: -- activity gc");
-            }else {
+            } else {
                 Log.d(TAG, "handleMessage: -- not gc");
 
             }
@@ -58,13 +58,14 @@ public class DataBindingTestActivity extends AppCompatActivity {
     }
 
     @SuppressLint("HandlerLeak")
-    Handler handler=new Handler(){
+    Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
             binding.name.setText("rrrrrr");
             Log.d(TAG, "handleMessage:");
         }
     };
+
     public static void fun() {
         //        mCar= new Car();
         WeakReference<Car> weakReference = new WeakReference<>(new Car("111"));
@@ -86,6 +87,7 @@ public class DataBindingTestActivity extends AppCompatActivity {
         }
 
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -108,7 +110,18 @@ public class DataBindingTestActivity extends AppCompatActivity {
                     return;
             }
         });
-        handlerStatic.sendMessageDelayed(new Message(),30 * 1000 );
+        handlerStatic.sendMessageDelayed(new Message(), 30 * 1000);
+
+        TClass tClass = new TClass<A>();
+        getTMethod(tClass);
+    }
+
+    public <T> void getTMethod(T tClass) {
+
+    }
+
+    public <T> T getTMethod1(T tClass) {
+        return tClass;
     }
 
     public class Presenter {
@@ -123,8 +136,7 @@ public class DataBindingTestActivity extends AppCompatActivity {
             mUser1.setEmail("email");
         }
 
-        public void afterTextChanged(Editable s)
-        {
+        public void afterTextChanged(Editable s) {
             mUser1.setName(s.toString());
         }
     }

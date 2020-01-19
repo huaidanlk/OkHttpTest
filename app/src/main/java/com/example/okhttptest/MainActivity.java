@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.example.okhttptest.been.Car;
 import com.example.okhttptest.fragment.TestFragment;
+import com.example.okhttptest.mvp.MvpActivity;
 
 import java.lang.ref.WeakReference;
 
@@ -53,7 +54,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (view.getId()) {
             case R.id.btn_1:
 //                CommonActivity.startActivity(this,"MainActivity");
-                DataBindingTestActivity.startActivity(this);
+//                DataBindingTestActivity.startActivity(this);
+                 MvpActivity.startActivity(this);
                 break;
 //            case R.id.btn_2:
 //                Intent intent2=new Intent(this,RetrofitActivity.class);
