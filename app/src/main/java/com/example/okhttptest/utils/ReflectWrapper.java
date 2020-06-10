@@ -3,6 +3,7 @@ package com.example.okhttptest.utils;
 import android.support.annotation.Keep;
 import android.util.Log;
 
+import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -123,6 +124,24 @@ public class ReflectWrapper {
         throw new NoSuchFieldException("Field " + name + " not found in " + instance.getClass());
     }
 
+    public static Field findField(Class<?> originClazz, String name) throws NoSuchFieldException {
+        for (Class<?> clazz = originClazz; clazz != null; clazz = clazz.getSuperclass()) {
+            try {
+                Field field = clazz.getDeclaredField(name);
+
+                if (!field.isAccessible()) {
+                    field.setAccessible(true);
+                }
+
+                return field;
+            } catch (NoSuchFieldException e) {
+                // ignore and search next
+            }
+        }
+
+        throw new NoSuchFieldException("Field " + name + " not found in " + originClazz);
+    }
+
     public static Method findMethod(Object instance, String name, Class<?>... parameterTypes)
             throws NoSuchMethodException {
         for (Class<?> clazz = instance.getClass(); clazz != null; clazz = clazz.getSuperclass()) {
@@ -146,6 +165,9 @@ public class ReflectWrapper {
                 + " not found in " + instance.getClass());
 
     }
+
+
+
     public static Method findMethod(Class<?> clazz, String name, Class<?>... parameterTypes)
             throws NoSuchMethodException {
         for (; clazz != null; clazz = clazz.getSuperclass()) {
@@ -167,5 +189,48 @@ public class ReflectWrapper {
                 + " with parameters "
                 + Arrays.asList(parameterTypes)
                 + " not found in " + clazz);
+    }
+
+    public static Constructor<?> findConstructor(Class<?> originClazz, Class<?>... parameterTypes) throws NoSuchMethodException {
+        for (Class<?> clazz = originClazz; clazz != null; clazz = clazz.getSuperclass()) {
+            try {
+                Constructor<?> ctor = clazz.getDeclaredConstructor(parameterTypes);
+
+                if (!ctor.isAccessible()) {
+                    ctor.setAccessible(true);
+                }
+
+                return ctor;
+            } catch (NoSuchMethodException e) {
+                // ignore and search next
+            }
+        }
+
+        throw new NoSuchMethodException("Constructor"
+                + " with parameters "
+                + Arrays.asList(parameterTypes)
+                + " not found in " + originClazz);
+    }
+
+    public static Constructor<?> findConstructor(Object instance, Class<?>... parameterTypes)
+            throws NoSuchMethodException {
+        for (Class<?> clazz = instance.getClass(); clazz != null; clazz = clazz.getSuperclass()) {
+            try {
+                Constructor<?> ctor = clazz.getDeclaredConstructor(parameterTypes);
+
+                if (!ctor.isAccessible()) {
+                    ctor.setAccessible(true);
+                }
+
+                return ctor;
+            } catch (NoSuchMethodException e) {
+                // ignore and search next
+            }
+        }
+
+        throw new NoSuchMethodException("Constructor"
+                + " with parameters "
+                + Arrays.asList(parameterTypes)
+                + " not found in " + instance.getClass());
     }
 }
