@@ -17,13 +17,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".OkHttpActivity"></activity>
-        <activity android:name=".RetrofitActivity"></activity>
-        <activity android:name=".RxJavaActivity"></activity>
-        <activity android:name=".CommonActivity"></activity>
-        <activity android:name=".DataBindingTestActivity"></activity>
-        <activity android:name=".DataBindingTest1Activity"></activity>
-        <activity android:name=".mvp.MvpActivity"></activity>
+        <activity android:name=".OkHttpActivity" />
+        <activity android:name=".RetrofitActivity" />
+        <activity android:name=".RxJavaActivity" />
+        <activity android:name=".CommonActivity" />
+        <activity android:name=".DataBindingTestActivity" />
+        <activity android:name=".DataBindingTest1Activity" />
+        <activity android:name=".mvp.MvpActivity" />
+        <activity android:name=".SlideConflictActivity"></activity>
     </application>
 
 </manifest>
