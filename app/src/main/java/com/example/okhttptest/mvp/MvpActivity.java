@@ -37,4 +37,10 @@ public class MvpActivity extends AppCompatActivity implements IMvpView<MvpModel.
     public void updateView(MvpModel.MvpBeen been) {
         mText.setText(been.getId());
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mvpPresenter.detachView();
+    }
 }

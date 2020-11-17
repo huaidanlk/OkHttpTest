@@ -13,13 +13,13 @@ public class MvpModel {
         }
     }
 
-    public IMvpModel iMvpModel;
+    public IMvpModel<MvpModel.MvpBeen> iMvpModel;
 
-    public MvpModel(IMvpModel iMvpModel) {
+    public MvpModel(IMvpModel<MvpModel.MvpBeen> iMvpModel) {
         this.iMvpModel = iMvpModel;
     }
 
-    public void getData(){
+    public void request(){
         MvpBeen mvpBeen=new MvpBeen();
         mvpBeen.setId("Alex");
         iMvpModel.callback(mvpBeen);

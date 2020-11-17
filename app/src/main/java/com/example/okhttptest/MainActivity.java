@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btn_1:
 //                CommonActivity.startActivity(this,"MainActivity");
 //                DataBindingTestActivity.startActivity(this);
-                 MvpActivity.startActivity(this);
+                SlideConflictActivity.startActivity(this);
                 break;
 //            case R.id.btn_2:
 //                Intent intent2=new Intent(this,RetrofitActivity.class);
