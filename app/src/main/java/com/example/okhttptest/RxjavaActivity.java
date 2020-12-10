@@ -12,7 +12,7 @@ import android.widget.Toast;
 import com.example.okhttptest.been.GsonBen;
 import com.example.okhttptest.been.LoginRequest;
 import com.example.okhttptest.been.LoginResponse;
-import com.example.okhttptest.https.API;
+import com.example.okhttptest.https.api;
 import com.example.okhttptest.https.HttpUtils;
 
 import io.reactivex.Observable;
@@ -29,12 +29,12 @@ public class RxJavaActivity extends AppCompatActivity implements View.OnClickLis
     private static final String TAG = "RxJavaActivity";
     private Button btn_function;
     private TextView tv_text;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rxjava);
         initView();
-
     }
 
     private void initView() {
@@ -49,14 +49,14 @@ public class RxJavaActivity extends AppCompatActivity implements View.OnClickLis
             case R.id.btn_function:
                 //        fun1();
                 //        fun2();
-                //        fun3();
-                //        fun4(this);
-                fun5();
+                        fun3();
+//                        fun4(this);
+//                fun5();
                 break;
         }
     }
     private void fun5() {
-        API api = HttpUtils.create().create(API.class);
+        api api = HttpUtils.create().create(com.example.okhttptest.https.api.class);
         api.getAndroidInfo()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -85,7 +85,7 @@ public class RxJavaActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     private void fun4(final Context context) {
-        API api = HttpUtils.create().create(API.class);
+        api api = HttpUtils.create().create(com.example.okhttptest.https.api.class);
         api.Login(new LoginRequest())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
