@@ -24,7 +24,9 @@
         <activity android:name=".DataBindingTestActivity" />
         <activity android:name=".DataBindingTest1Activity" />
         <activity android:name=".mvp.MvpActivity" />
-        <activity android:name=".SlideConflictActivity"></activity>
+        <activity android:name=".SlideConflictActivity"/>
+        <activity android:name=".service.MyServiceActivity"/>
+        <service android:name=".service.MyService"></service>
     </application>
 
 </manifest>

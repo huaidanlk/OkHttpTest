@@ -11,6 +11,7 @@ import android.widget.Toast;
 import com.example.okhttptest.been.Car;
 import com.example.okhttptest.fragment.TestFragment;
 import com.example.okhttptest.mvp.MvpActivity;
+import com.example.okhttptest.service.MyServiceActivity;
 import com.example.okhttptest.utils.ReflectWrapper;
 
 import java.lang.ref.WeakReference;
@@ -19,7 +20,6 @@ import java.lang.reflect.Method;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, CommonActivity.onCommonClick {
     private static final String TAG = "CarGc";
     private Car mCar;
-
 
 
     @Override
@@ -42,15 +42,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     // 关闭手机
     public static void shutDown() {
-        ReflectWrapper reflectWrapper =new ReflectWrapper();
+        ReflectWrapper reflectWrapper = new ReflectWrapper();
         try {
             Class<?> oIPowerManager = Class.forName("android.os.PowerManager");
 
-            Method mShutdown  =  reflectWrapper.findMethod(oIPowerManager,"shutdown",boolean.class,String.class,boolean.class);
+            Method mShutdown = reflectWrapper.findMethod(oIPowerManager, "shutdown", boolean.class, String.class, boolean.class);
             //@hide 被限制的api 无法通过PathClassLoader来反射调用
 //            Method mShutdown = oIPowerManager.getMethod("shutdown",boolean.class,String.class,boolean.class);
-            Object obj =oIPowerManager.newInstance();
-            mShutdown.invoke(obj,true,null,true);
+            Object obj = oIPowerManager.newInstance();
+            mShutdown.invoke(obj, true, null, true);
 
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -73,7 +73,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btn_1:
 //                CommonActivity.startActivity(this,"MainActivity");
 //                DataBindingTestActivity.startActivity(this);
-                SlideConflictActivity.startActivity(this);
+//                SlideConflictActivity.startActivity(this);
+                MyServiceActivity.startActivity(this);
                 break;
 //            case R.id.btn_2:
 //                Intent intent2=new Intent(this,RetrofitActivity.class);
