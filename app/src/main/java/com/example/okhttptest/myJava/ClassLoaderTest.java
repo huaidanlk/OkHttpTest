@@ -6,6 +6,9 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 public class ClassLoaderTest {
+
+    //https://www.cnblogs.com/renyuanwei/p/9394247.html private public 无参 有参 的调用
+
     public static void main(String[] args) {
         DiskClassLoader diskClassLoader = new DiskClassLoader("/Users/lk/myJava");//1
         try {
@@ -14,7 +17,7 @@ public class ClassLoaderTest {
                 try {
                     Object obj = c.newInstance();
                     System.out.println(obj.getClass().getClassLoader());
-                    Method method = c.getDeclaredMethod("say", null);
+                    Method method = c.getMethod("say", null);
                     method.invoke(obj, null);//3
                 } catch (InstantiationException | IllegalAccessException
                         | NoSuchMethodException

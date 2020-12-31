@@ -1,7 +1,7 @@
 package com.example.okhttptest.mvp;
 
 public class MvpModel {
-    public static class MvpBeen{
+    public static class MvpBeen {
         String id;
 
         public void setId(String id) {
@@ -19,8 +19,8 @@ public class MvpModel {
         this.iMvpModel = iMvpModel;
     }
 
-    public void request(){
-        MvpBeen mvpBeen=new MvpBeen();
+    public void request() {
+        MvpBeen mvpBeen = new MvpBeen();
         mvpBeen.setId("Alex");
         iMvpModel.callback(mvpBeen);
     }
