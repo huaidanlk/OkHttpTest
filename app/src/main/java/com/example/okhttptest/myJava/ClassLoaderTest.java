@@ -1,7 +1,5 @@
 package com.example.okhttptest.myJava;
 
-import com.example.okhttptest.myJava.DiskClassLoader;
-
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
