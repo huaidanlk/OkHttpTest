@@ -6,7 +6,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 public class DiskClassLoader extends ClassLoader {
-    private String path;
+    private String path;  // jobs1 的路径
     public DiskClassLoader(String path) {
         this.path = path;
     }
@@ -21,6 +21,7 @@ public class DiskClassLoader extends ClassLoader {
         }
         return clazz;
     }
+    // jobs1 的包名
     private byte[] loadClassData(String name) {
         String fileName = getFileName(name);
         File file = new File(path,fileName);

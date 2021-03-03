@@ -16,6 +16,7 @@ import com.example.okhttptest.utils.ReflectWrapper;
 
 import java.lang.ref.WeakReference;
 import java.lang.reflect.Method;
+import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, CommonActivity.onCommonClick {
     private static final String TAG = "CarGc";
@@ -37,7 +38,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
         initView();
-
+        ClassLoader loader = MainActivity.class.getClassLoader();
+        while (loader != null) {
+            Log.d("alex",loader.toString());//1
+            loader = loader.getParent();
+        }
+        HashMap<HashMap<String,String> , String> map;
     }
 
     // 关闭手机

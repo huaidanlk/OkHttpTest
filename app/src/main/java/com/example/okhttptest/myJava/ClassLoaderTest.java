@@ -8,9 +8,13 @@ public class ClassLoaderTest {
     //https://www.cnblogs.com/renyuanwei/p/9394247.html private public 无参 有参 的调用
 
     public static void main(String[] args) {
-        DiskClassLoader diskClassLoader = new DiskClassLoader("/Users/lk/myJava");//1
+//        DiskClassLoader diskClassLoader = new DiskClassLoader("/Users/lk/myJava");//1   见路径下的Jobs1 文件
+        DiskClassLoader diskClassLoader = new DiskClassLoader("/Users/lk/GithubProjects/OkHttpTest/app/src/main/java");
+
         try {
-            Class c = diskClassLoader.loadClass("com.example.Jobs1");//2
+//            Class c = diskClassLoader.loadClass("com.example.Jobs1");//2
+            Class c = diskClassLoader.loadClass("com.example.okhttptest.myJava.Jobs1");//2
+
             if (c != null) {
                 try {
                     Object obj = c.newInstance();
