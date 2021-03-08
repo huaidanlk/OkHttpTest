@@ -9,7 +9,7 @@ public class MergeSort {
 
         sort(0, arrays.length);
 
-
+        moveChar();
         for(int i = 0;i<arrays.length;i++){
             System.out.print(arrays[i] + "_");
         }
@@ -48,6 +48,19 @@ public class MergeSort {
             }
         }
 
+    }
+
+    public static void moveChar(){
+        String sa= "*asd***a**d*s";
+        char s[] = sa.toCharArray();
+        int index=sa.lastIndexOf('*');
+        for(int i=index-1;i>=0;i--){
+            if(s[i]!='*'){
+                s[index--]=s[i];
+                s[i]='*';
+            }
+        }
+        System.out.println(s);
     }
 
 }
