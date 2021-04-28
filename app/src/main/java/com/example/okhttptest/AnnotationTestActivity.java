@@ -43,3 +43,4 @@ public class AnnotationTestActivity extends AppCompatActivity {
         ViewInject.unInject();
     }
 }
+
