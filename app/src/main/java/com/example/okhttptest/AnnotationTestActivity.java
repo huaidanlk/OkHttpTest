@@ -33,6 +33,7 @@ public class AnnotationTestActivity extends AppCompatActivity {
                 break;
             case R.id.btn:
                 Toast.makeText(this,"hello word",Toast.LENGTH_SHORT).show();
+                Toast.makeText(this,"hello1 word",Toast.LENGTH_SHORT).show();
                 break;
 
         }
