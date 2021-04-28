@@ -10,7 +10,7 @@ public class MergeSort {
         sort(0, arrays.length);
 
         moveChar();
-        for(int i = 0;i<arrays.length;i++){
+        for (int i = 0; i < arrays.length; i++) {
             System.out.print(arrays[i] + "_");
         }
     }
@@ -26,7 +26,7 @@ public class MergeSort {
     public static void merge(int begin, int mid, int end) {
         int li = 0, le = mid - begin;
 
-        int ri = mid , re =end;
+        int ri = mid, re = end;
         int ai = begin;
 
         //复制左边的数组
@@ -35,13 +35,13 @@ public class MergeSort {
         }
 
         // 左边还未结束
-        while (li < le){
+        while (li < le) {
             // ri >=re  右边已经结束了， 把剩下的 leftArray 复制到 arrays
-            if( ri>=re || leftArray[li]<arrays[ri]){ //
+            if (ri >= re || leftArray[li] < arrays[ri]) { //
                 arrays[ai] = leftArray[li];
                 li++;
                 ai++;
-            }else {
+            } else {
                 arrays[ai] = arrays[ri];
                 ri++;
                 ai++;
@@ -50,17 +50,37 @@ public class MergeSort {
 
     }
 
-    public static void moveChar(){
-        String sa= "*asd***a**d*s";
+    public static void moveChar() {
+        String sa = "*asd***a**d*s";
         char s[] = sa.toCharArray();
-        int index=sa.lastIndexOf('*');
-        for(int i=index-1;i>=0;i--){
-            if(s[i]!='*'){
-                s[index--]=s[i];
-                s[i]='*';
+        int index = sa.lastIndexOf('*');
+        for (int i = index - 1; i >= 0; i--) {
+            if (s[i] != '*') {
+                s[index--] = s[i];
+                s[i] = '*';
             }
         }
         System.out.println(s);
     }
 
+    public class ListNode {
+        int val;
+        ListNode next;
+
+        ListNode(int x) {
+            val = x;
+        }
+    }
+
+    public ListNode reverseList(ListNode head) {
+        ListNode pre = null;
+        ListNode curr = head;
+        while (curr != null) {
+            ListNode temp = curr.next;
+            curr.next = pre;
+            pre = curr;
+            curr = temp;
+        }
+        return pre;
+    }
 }

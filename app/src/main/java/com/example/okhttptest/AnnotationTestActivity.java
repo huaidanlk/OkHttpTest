@@ -13,7 +13,7 @@ import com.example.okhttptest.annotation.OnClick;
 
 
 @ContentView(R.layout.activity_test)
-public class TestActivity extends AppCompatActivity {
+public class AnnotationTestActivity extends AppCompatActivity {
     @Inject(R.id.text)
     TextView text;
     @Inject(R.id.btn)
