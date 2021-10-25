@@ -27,6 +27,14 @@
         <activity android:name=".SlideConflictActivity"/>
         <activity android:name=".service.MyServiceActivity"/>
         <service android:name=".service.MyService"></service>
+        <service
+            android:name=".service.PersonService"
+            android:enabled="true"
+            android:exported="true"
+            android:process=":remote">
+        </service>
+        <activity android:name=".service.MyPersonActivity"/>
+
     </application>
 
 </manifest>

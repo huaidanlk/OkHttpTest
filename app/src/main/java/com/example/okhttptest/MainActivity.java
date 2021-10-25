@@ -11,6 +11,8 @@ import android.widget.Toast;
 import com.example.okhttptest.been.Car;
 import com.example.okhttptest.fragment.TestFragment;
 import com.example.okhttptest.mvp.MvpActivity;
+import com.example.okhttptest.myAidl.IPersonAidlInterface;
+import com.example.okhttptest.service.MyPersonActivity;
 import com.example.okhttptest.service.MyServiceActivity;
 import com.example.okhttptest.utils.ReflectWrapper;
 
@@ -22,7 +24,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private static final String TAG = "CarGc";
     private Car mCar;
 
-
+    private IPersonAidlInterface iPersonAidlInterface;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +47,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         HashMap<HashMap<String,String> , String> map;
     }
+
+
 
     // 关闭手机
     public static void shutDown() {
@@ -80,7 +84,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //                CommonActivity.startActivity(this,"MainActivity");
 //                DataBindingTestActivity.startActivity(this);
 //                SlideConflictActivity.startActivity(this);
-                MyServiceActivity.startActivity(this);
+                MyPersonActivity.startActivity(this);
                 break;
 //            case R.id.btn_2:
 //                Intent intent2=new Intent(this,RetrofitActivity.class);
