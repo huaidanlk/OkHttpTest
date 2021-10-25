@@ -37,6 +37,7 @@ public class MyPersonActivity extends AppCompatActivity implements View.OnClickL
     public void bindServiceClick(View view) {
         Log.i(TAG,"绑定服务...");
         Intent intent = new Intent(this,PersonService.class);
+
         // 绑定服务时自动创建服务
         bindService(intent,conn, Context.BIND_AUTO_CREATE);
     }
