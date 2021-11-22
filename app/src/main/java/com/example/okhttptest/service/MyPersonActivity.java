@@ -37,7 +37,6 @@ public class MyPersonActivity extends AppCompatActivity implements View.OnClickL
     public void bindServiceClick(View view) {
         Log.i(TAG,"绑定服务...");
         Intent intent = new Intent(this,PersonService.class);
-
         // 绑定服务时自动创建服务
         bindService(intent,conn, Context.BIND_AUTO_CREATE);
     }
@@ -62,7 +61,7 @@ public class MyPersonActivity extends AppCompatActivity implements View.OnClickL
     private ServiceConnection conn = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
-            // 根据实际情况返回 IBinder 的本地对象或其代理对象
+            // 根据实际情况返回 IBinder 的本地对象或其代理对象  BinderProxy代理实例
             iPersonAidlInterface = IPersonAidlInterface.Stub.asInterface(service);
             System.out.println("MainActivity1234556 具体的业务对象："+iPersonAidlInterface);
         }
