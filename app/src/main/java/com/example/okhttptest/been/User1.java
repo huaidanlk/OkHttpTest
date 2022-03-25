@@ -1,7 +1,7 @@
 package com.example.okhttptest.been;
 
-import android.databinding.BaseObservable;
-import android.databinding.Bindable;
+import androidx.databinding.BaseObservable;
+import androidx.databinding.Bindable;
 
 import com.example.okhttptest.BR;
 
