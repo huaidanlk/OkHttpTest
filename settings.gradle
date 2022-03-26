@@ -1,4 +1,3 @@
-include ':data_structure'
 include ':app'
 include ':apt-annotation'
 include ':apt-processor'
