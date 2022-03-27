@@ -10,6 +10,8 @@ import android.widget.Toast;
 import com.example.okhttptest.annotation.ContentView;
 import com.example.okhttptest.annotation.Inject;
 import com.example.okhttptest.annotation.OnClick;
+import com.example.okhttptest.apt_annotation.BindView;
+import com.example.okhttptest.apt_library.BindViewTools;
 
 
 @ContentView(R.layout.activity_test)
@@ -18,10 +20,13 @@ public class AnnotationTestActivity extends AppCompatActivity {
     TextView text;
     @Inject(R.id.btn)
     Button btn;
+    @BindView(R.id.btn)
+    Button mButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ViewInject.inject(this);
+        BindViewTools.bind(this);
 
     }
 

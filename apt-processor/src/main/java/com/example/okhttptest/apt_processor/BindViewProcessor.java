@@ -1,6 +1,7 @@
 package com.example.okhttptest.apt_processor;
 
 import com.example.okhttptest.apt_annotation.BindView;
+import com.google.auto.service.AutoService;
 import com.squareup.javapoet.JavaFile;
 
 import java.io.IOException;

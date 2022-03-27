@@ -57,7 +57,8 @@ public class ClassCreatorProxy {
             VariableElement element = mVariableElementMap.get(id);
             String name = element.getSimpleName().toString();
             String type = element.asType().toString();
-            methodBuilder.addCode("host." + name + " = "+"（" + type + ")(((android.app.Activity)host).findViewById(" + id + "));" );
+            methodBuilder.addCode("host." + name + " = " + "(" + type + ")(((android.app.Activity)host).findViewById( " + id + "));");
+
         }
         return methodBuilder.build();
     }
