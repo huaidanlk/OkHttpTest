@@ -11,9 +11,10 @@ import android.widget.Toast;
 import com.example.okhttptest.been.Car;
 import com.example.okhttptest.fragment.TestFragment;
 import com.example.okhttptest.mvp.MvpActivity;
-import com.example.okhttptest.myAidl.IPersonAidlInterface;
+//import com.example.okhttptest.myAidl.IPersonAidlInterface;
 import com.example.okhttptest.service.MyPersonActivity;
 import com.example.okhttptest.service.MyServiceActivity;
+import com.example.okhttptest.utils.Misc;
 import com.example.okhttptest.utils.ReflectWrapper;
 
 import java.lang.ref.WeakReference;
@@ -24,14 +25,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private static final String TAG = "CarGc";
     private Car mCar;
 
-    private IPersonAidlInterface iPersonAidlInterface;
+//    private IPersonAidlInterface iPersonAidlInterface;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         findViewById(R.id.btn_1).setOnClickListener(this);
 //        findViewById(R.id.btn_2).setOnClickListener(this);
 //        findViewById(R.id.btn_3).setOnClickListener(this);
+
+        try {
+            Misc.hookOnClickListener(findViewById(R.id.btn_2));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         runOnUiThread(new Runnable() {
             @Override
