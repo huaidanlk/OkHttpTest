@@ -55,16 +55,18 @@ dependencies {
     implementation project(':apt-annotation')
     implementation project(':apt-library')
     annotationProcessor project(':apt-processor')
+
+    implementation "android.arch.lifecycle:extensions:1.1.1"
 }
 repositories {
     mavenCentral()
 }
 
-//task hello {
-//    doLast {
-//        println 'Hello World'
-//    }
-//}
+task hello {
+    doLast {
+        println 'Hello World'
+    }
+}
 
 //def Task hello1 = task(hello1)
 //hello1.doLast {
