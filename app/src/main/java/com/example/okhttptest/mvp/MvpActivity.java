@@ -29,7 +29,6 @@ public class MvpActivity extends AppCompatActivity implements IMvpView<MvpModel.
             @Override
             public void onClick(View v) {
                 mvpPresenter.getData();
-
             }
         });
     }
